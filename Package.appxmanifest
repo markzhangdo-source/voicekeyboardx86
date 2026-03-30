@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:desktop6="http://schemas.microsoft.com/appx/manifest/desktop/windows10/6"
+  IgnorableNamespaces="uap rescap desktop desktop6">
+
+  <Identity
+    Name="hzdoco.voicekeyboardx64"
+    Publisher="CN=DFBD7A4A-009C-41A0-AEE3-6CE5AF58E84D"
+    Version="1.0.0.0"
+    ProcessorArchitecture="x64"/>
+
+  <Properties>
+    <DisplayName>voicekeyboardx64</DisplayName>
+    <PublisherDisplayName>hzdoco</PublisherDisplayName>
+    <Logo>Assets\Store\StoreLogo.png</Logo>
+    <Description>100% local AI voice transcription. Press a hotkey, speak, and text appears in any app — no cloud, no internet required. Optimized for x64 Windows.</Description>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0"/>
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-us"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="VoiceKeyboard" Executable="VoiceKeyboard.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="VoiceKeyboard"
+        Description="Local AI voice transcription — speaks text into any app"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\Store\Square150x150Logo.png"
+        Square44x44Logo="Assets\Store\Square44x44Logo.png">
+        <uap:DefaultTile
+          Wide310x150Logo="Assets\Store\Wide310x150Logo.png"
+          Square310x310Logo="Assets\Store\Square310x310Logo.png"
+          Square71x71Logo="Assets\Store\Square71x71Logo.png"
+          ShortName="VoiceKeys"/>
+        <uap:SplashScreen Image="Assets\Store\SplashScreen.png" BackgroundColor="#1E1E2E"/>
+      </uap:VisualElements>
+      <Extensions>
+        <!-- System tray startup entry -->
+        <desktop:Extension Category="windows.startupTask" Executable="VoiceKeyboard.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="VoiceKeyboardStartup" Enabled="false" DisplayName="VoiceKeyboard"/>
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <!-- Standard capabilities must come first -->
+    <!-- Internet for downloading Whisper models from Hugging Face -->
+    <Capability Name="internetClient"/>
+    <!-- Full trust required for global hotkey (RegisterHotKey) and SendInput -->
+    <rescap:Capability Name="runFullTrust"/>
+    <!-- Device capabilities last -->
+    <!-- Microphone access for voice recording -->
+    <DeviceCapability Name="microphone"/>
+  </Capabilities>
+
+</Package>

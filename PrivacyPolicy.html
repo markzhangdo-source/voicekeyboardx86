@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VoiceKeyboard – Privacy Policy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         max-width: 760px; margin: 40px auto; padding: 0 20px;
+         color: #1a1a2e; line-height: 1.7; }
+  h1   { color: #3a3a8e; }
+  h2   { color: #3a3a8e; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-top: 36px; }
+  .badge { background:#e8f4fd; border-left:4px solid #3a3a8e; padding:12px 16px;
+           border-radius:4px; margin:24px 0; }
+  footer { margin-top:60px; color:#777; font-size:0.9em; border-top:1px solid #eee; padding-top:16px; }
+</style>
+</head>
+<body>
+
+<h1>🎤 VoiceKeyboard — Privacy Policy</h1>
+<p><em>Last updated: March 2026</em></p>
+
+<div class="badge">
+  <strong>Short version:</strong> VoiceKeyboard processes your voice 100% on your device.
+  No audio, text, or personal data is ever sent to any server or third party.
+  We collect nothing.
+</div>
+
+<h2>1. Information We Collect</h2>
+<p><strong>We collect no personal information whatsoever.</strong></p>
+<p>VoiceKeyboard does not have accounts, logins, analytics, advertising identifiers,
+crash reporting services, or any network calls that transmit user data.</p>
+
+<h2>2. Microphone Access</h2>
+<p>VoiceKeyboard requests access to your microphone solely to capture your voice when
+you activate the recording hotkey. Audio is:</p>
+<ul>
+  <li>Captured in memory only while you are actively recording.</li>
+  <li>Processed immediately on your device using a local AI model (OpenAI Whisper, running fully offline).</li>
+  <li><strong>Never written to disk</strong> (beyond the temporary in-memory buffer).</li>
+  <li><strong>Never transmitted</strong> — no internet connection is used during transcription.</li>
+  <li>Discarded from memory as soon as transcription completes.</li>
+</ul>
+
+<h2>3. AI Model Downloads</h2>
+<p>When you choose to download a Whisper transcription model (e.g., Base or Small),
+the app fetches the model file from Hugging Face's public servers
+(<a href="https://huggingface.co">huggingface.co</a>). This download:</p>
+<ul>
+  <li>Is initiated only by your explicit action in the Settings screen.</li>
+  <li>Downloads only the model weights file — no personal data is sent.</li>
+  <li>Stores the model in <code>%APPDATA%\VoiceKeyboard\models\</code> on your device.</li>
+</ul>
+<p>After download the model runs entirely offline. No further network communication occurs.</p>
+
+<h2>4. Local Storage</h2>
+<p>VoiceKeyboard stores the following files on your device only:</p>
+<ul>
+  <li><code>%APPDATA%\VoiceKeyboard\settings.json</code> — your preferences (hotkey, model choice, etc.)</li>
+  <li><code>%APPDATA%\VoiceKeyboard\models\</code> — downloaded AI model files</li>
+  <li><code>%APPDATA%\VoiceKeyboard\crash.log</code> — error log (local only, never uploaded)</li>
+</ul>
+<p>None of this data leaves your device.</p>
+
+<h2>5. Clipboard</h2>
+<p>When transcription is complete, VoiceKeyboard briefly places the transcribed text
+on your clipboard to facilitate pasting. The previous clipboard content is not stored
+or transmitted. You can re-paste the transcribed text with Ctrl+V.</p>
+
+<h2>6. Third-Party SDKs</h2>
+<p>VoiceKeyboard uses the following open-source libraries, none of which collect data:</p>
+<ul>
+  <li><strong>Whisper.net</strong> — .NET wrapper for OpenAI's Whisper model (MIT License)</li>
+  <li><strong>NAudio</strong> — audio capture library (MIT License)</li>
+</ul>
+
+<h2>7. Children's Privacy</h2>
+<p>VoiceKeyboard does not collect any information from anyone, including children under 13.</p>
+
+<h2>8. Changes to This Policy</h2>
+<p>If we ever update this privacy policy, the new version will be posted at this URL
+and the "Last updated" date above will change. Given that we collect no data,
+meaningful changes to this policy are unlikely.</p>
+
+<h2>9. Contact</h2>
+<p>Questions about this privacy policy?
+Contact us at: <a href="mailto:privacy@voicekeyboard.app">privacy@voicekeyboard.app</a></p>
+
+<footer>
+  VoiceKeyboard · Local AI Voice Transcription for Windows ARM64 ·
+  <a href="https://voicekeyboard.app">voicekeyboard.app</a>
+</footer>
+
+</body>
+</html>
