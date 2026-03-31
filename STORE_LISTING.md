@@ -1,7 +1,7 @@
 # VoiceKeyboard — Microsoft Store Listing
 
 ## App Identity
-- **Store name:** VoiceKeyboard – AI Voice Typer
+- **Store name:** VoiceKeyboard – AI Voice Typer (x64)
 - **Category:** Productivity
 - **Sub-category:** Dictation & Speech
 - **Pricing:** $6.99 (one-time purchase) — see Pricing Notes below
@@ -11,7 +11,7 @@
 ---
 
 ## Short Description (up to 270 characters)
-> Press a hotkey, speak, and your words appear in any app — no cloud, no subscription. 100% local AI voice transcription, optimized for ARM64 / Snapdragon X Elite Windows devices.
+> Press a hotkey, speak, and your words appear in any app — no cloud, no subscription. 100% local AI voice transcription, runs entirely on your x64 Windows device.
 
 ---
 
@@ -26,8 +26,8 @@ Powered by OpenAI's Whisper AI running entirely on your device, VoiceKeyboard tr
 ### 🔒 100% Private & Local
 Your voice **never leaves your device**. No cloud. No servers. No subscription required. The AI model runs entirely offline after a one-time download.
 
-### ⚡ ARM64 Native — Built for Snapdragon X
-VoiceKeyboard is compiled natively for ARM64, making it exceptionally fast and battery-efficient on Surface Pro with Snapdragon X Elite/Plus, Copilot+ PCs, and any ARM64 Windows device.
+### ⚡ x64 Native — Built for Modern Windows Laptops
+VoiceKeyboard is compiled natively for x64, making it fast and efficient on any modern Windows laptop or desktop.
 
 ### 🌍 Works Everywhere
 Transcribed text is pasted into any text field — browsers, Word, Notepad, Outlook, Slack, Teams, VS Code, chat apps, and more.
@@ -58,7 +58,7 @@ Enable "Paste to cursor position" and the text appears wherever your cursor is w
 
 ## What's New (Version 1.0)
 - Initial release
-- ARM64 native — optimized for Snapdragon X Elite/Plus
+- x64 native — runs on any modern Windows laptop or desktop
 - Toggle and Push-to-Talk recording modes
 - Customizable hotkeys
 - 4 Whisper model sizes (Tiny, Base, Small, Medium)
@@ -99,8 +99,8 @@ Enable "Paste to cursor position" and the text appears wherever your cursor is w
 
 ## Store Keywords (search terms)
 voice typing, voice keyboard, speech to text, dictation, whisper AI, local AI,
-offline transcription, ARM64, Snapdragon, voice input, productivity, voice control,
-privacy, no cloud, Copilot+ PC
+offline transcription, x64, voice input, productivity, voice control,
+privacy, no cloud, Windows laptop
 
 ---
 
@@ -129,7 +129,7 @@ Before submitting to Partner Center:
 - [ ] Host privacy policy at a public URL (use PrivacyPolicy.html from this repo)
 - [ ] Generate final icons (run Assets/GenerateIcons.ps1, then polish in Figma/Photoshop)
 - [ ] Take the 5 screenshots above
-- [ ] Build the MSIX: `.\Build-Store.ps1 -ForStore -Version 1.0.0.0`
+- [ ] Build the MSIX: `.\Build-Store.ps1 -ForStore -Version 1.0.0.0` (produces `publish\VoiceKeyboard_1.0.0.0_x64.msix`)
 - [ ] Upload MSIX + screenshots + description in Partner Center
 - [ ] Submit for certification (typically 1-3 business days)
 

@@ -1,6 +1,8 @@
 bin/
 obj/
 publish/
+tools/packages/
+tools/nuget.exe
 *.user
 .vs/
 .claude/

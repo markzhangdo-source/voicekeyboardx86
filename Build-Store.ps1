@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Builds VoiceKeyboard as a self-contained ARM64 MSIX package for Microsoft Store submission.
+    Builds VoiceKeyboard as a self-contained x64 MSIX package for Microsoft Store submission.
 
 .DESCRIPTION
-    1. Publishes the WPF app as self-contained ARM64
+    1. Publishes the WPF app as self-contained x64
     2. Copies Package.appxmanifest + Assets into the publish folder
     3. Packages with makeappx.exe
     4. Signs the package with signtool.exe (dev self-signed cert, or your real cert)
@@ -28,18 +28,19 @@ param(
 $ErrorActionPreference = "Stop"
 $root    = $PSScriptRoot
 $publish = "$root\publish\VoiceKeyboard"
-$msix    = "$root\publish\VoiceKeyboard_$($Version)_arm64.msix"
+$msix    = "$root\publish\VoiceKeyboard_$($Version)_x64.msix"
 
 # ── Find Windows SDK tools ────────────────────────────────────────────────────
 # Check bundled tools first (extracted from Microsoft.Windows.SDK.BuildTools NuGet)
-$bundledSdk  = "$root\tools\sdk\bin\10.0.26100.0"
+$bundledSdk  = (Get-ChildItem "$root\tools\packages" -Filter "Microsoft.Windows.SDK.BuildTools.*" -Directory -ErrorAction SilentlyContinue | Sort-Object Name -Descending | Select-Object -First 1 | ForEach-Object { "$($_.FullName)\bin\10.0.26100.0" })
+if (-not $bundledSdk) { $bundledSdk = "$root\tools\sdk\bin\10.0.26100.0" }
 $systemSdk   = "C:\Program Files (x86)\Windows Kits\10\bin"
 $makeAppx    = $null
 $signTool    = $null
 
 foreach ($base in @($bundledSdk, (Get-ChildItem $systemSdk -Directory -ErrorAction SilentlyContinue | Sort-Object Name -Descending | Select-Object -First 1 -ExpandProperty FullName))) {
     if (-not $base) { continue }
-    foreach ($arch in @("arm64", "x64", "x86")) {
+    foreach ($arch in @("x64", "x64", "x86")) {
         $mx = "$base\$arch\makeappx.exe"
         $st = "$base\$arch\signtool.exe"
         if ((Test-Path $mx) -and (-not $makeAppx)) { $makeAppx = $mx }
@@ -54,10 +55,12 @@ Write-Host "signtool:  $signTool" -ForegroundColor Cyan
 Write-Host "`n[1/4] Publishing self-contained ARM64 release..." -ForegroundColor Yellow
 if (Test-Path $publish) { Remove-Item $publish -Recurse -Force }
 
-$dotnet = if (Test-Path "C:\dotnet\dotnet.exe") { "C:\dotnet\dotnet.exe" } else { "dotnet" }
+$dotnetCandidates = @("C:\Program Files\dotnet\dotnet.exe", "C:\dotnet\dotnet.exe", "C:\Program Files (x86)\dotnet\dotnet.exe")
+$dotnet = ($dotnetCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1)
+if (-not $dotnet) { $dotnet = "dotnet" }
 & $dotnet publish "$root\VoiceKeyboard.csproj" `
     -c Release `
-    -r win-arm64 `
+    -r win-x64 `
     --self-contained true `
     -p:PublishSingleFile=false `
     -p:DebugType=None `
